@@ -1,0 +1,22 @@
+---
+title: "ASP.NET Core'da Clean Architecture Pratikleri"
+description: "Katmanlı mimari, bağımlılık yönü ve test edilebilirlik için pratik rehber."
+date: "2025-09-12"
+category: "Backend"
+author: "MIRVATE Engineering"
+slug: "clean-architecture-net"
+---
+
+Clean Architecture, domain mantığını altyapı detaylarından ayırarak uzun ömürlü sistemler kurmayı hedefler.
+
+## Temel ilkeler
+
+- Bağımlılıklar her zaman içeriye, domain'e doğru akar.
+- Use-case'ler (application services) dış dünya çerçevelerinden bağımsızdır.
+- Altyapı (EF Core, mesaj kuyrukları, ödeme SDK'ları) adaptör olarak bağlanır.
+
+## Ne zaman uygularız?
+
+Orta ve büyük ölçekli ürünlerde; birden fazla ekibin aynı codebase üzerinde çalıştığı ve teknik borcun maliyetli olduğu senaryolarda.
+
+Küçük prototiplerde aşırı katmanlama yerine yalın bir yapı tercih edilebilir — mimariyi ürünle birlikte büyütürüz.

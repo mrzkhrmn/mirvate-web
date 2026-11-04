@@ -1,0 +1,21 @@
+---
+title: "React Native Performans: Hermes, Liste ve Animasyon"
+description: "Mobil uygulamalarda 60/120Hz akıcılık için ölçülebilir iyileştirme adımları."
+date: "2025-10-03"
+category: "Mobil"
+author: "MIRVATE Engineering"
+slug: "react-native-performance"
+---
+
+React Native uygulamalarında performans, tek bir ayardan değil ölçüm + iterasyon döngüsünden gelir.
+
+## Hızlı kazanımlar
+
+1. Hermes motorunu etkin tutun.
+2. FlatList / FlashList ile pencereleme kullanın.
+3. Reanimated ile UI thread animasyonları tercih edin.
+4. Gereksiz re-render'ları React DevTools ile izleyin.
+
+## Offline-first
+
+Kritik okuma yollarını yerel önbelleğe alın; senkronizasyonu arka planda çalıştırın. Kullanıcı deneyimi ağ kalitesinden bağımsız kalmalıdır.

@@ -1,0 +1,18 @@
+---
+title: "Kubernetes'te Gözlemlenebilirlik Temelleri"
+description: "Metrik, log ve iz (trace) üçlüsüyle dağıtık sistemlerde sıfır belirsizlik."
+date: "2025-11-01"
+category: "DevOps"
+author: "MIRVATE Engineering"
+slug: "kubernetes-observability"
+---
+
+Dağıtık sistemlerde "çalışıyor gibi görünüyor" yeterli değildir. Telemetri olmadan demolar yanıltıcıdır.
+
+## Üç sütun
+
+- **Metrikler:** Throughput, latency (p99), hata oranı
+- **Loglar:** Yapılandırılmış, korelasyon ID'li
+- **İzler:** Servis sınırları boyunca istek yolu
+
+Canlı test ortamlarını üretim benzeri telemetri ile çalıştırdığımızda müşteriler ilerlemeyi simülasyon değil gerçek davranış üzerinden doğrular.
