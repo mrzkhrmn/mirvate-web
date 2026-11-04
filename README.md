@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MIRVATE
 
-## Getting Started
+Kurumsal yazılım mühendisliği web sitesi — Next.js App Router, TypeScript, Tailwind CSS, Framer Motion.
 
-First, run the development server:
+## Geliştirme
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Üretim
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Docker (Ubuntu VPS)
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker build -t mirvate --build-arg NEXT_PUBLIC_SITE_URL=https://mirvate.com .
+docker run -d -p 3000:3000 \
+  -e RESEND_API_KEY=... \
+  -e CONTACT_TO_EMAIL=info@mirvate.com \
+  mirvate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Nginx reverse proxy ile `localhost:3000` üzerine HTTPS sonlandırın. Gizli anahtarları image içine koymayın.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## İletişim formu (e-posta)
 
-## Deploy on Vercel
+Ayrı bir backend yazmanız gerekmez. Form `/api/contact` üzerinden çalışır.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. [Resend](https://resend.com) hesabı açın, API key alın
+2. `mirvate.com` domain’ini Resend’de doğrulayın
+3. `.env.local` içine:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+RESEND_API_KEY=re_xxx
+CONTACT_TO_EMAIL=info@mirvate.com
+CONTACT_FROM_EMAIL=MIRVATE <info@mirvate.com>
+```
+
+Domain doğrulanana kadar Resend test adresi (`onboarding@resend.dev`) kullanılabilir.
+
+## Ortam değişkenleri
+
+| Değişken | Açıklama |
+|----------|----------|
+| `NEXT_PUBLIC_SITE_URL` | Canonical domain |
+| `NEXT_PUBLIC_API_BASE_URL` | İleride ASP.NET Core API |
+| `CONTACT_TO_EMAIL` | Formun gideceği adres (varsayılan: info@mirvate.com) |
+| `RESEND_API_KEY` | Resend ile e-posta gönderimi |
+| `CONTACT_FROM_EMAIL` | Gönderen adresi (doğrulanmış domain) |
+| `CONTACT_WEBHOOK_URL` | Alternatif: harici webhook |
+| `CONTACT_API_KEY` | Webhook auth (opsiyonel) |
+
+## Tasarım
+
+Görsel referans: `design/` (Obsidian Precision + landing HTML). Görseller `public/images/` altında.

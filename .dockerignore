@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+!README.md
+design
+.env*
+!.env.example
+Dockerfile
+.dockerignore
+npm-debug.log*
+.DS_Store
+agent-transcripts
+.cursor
