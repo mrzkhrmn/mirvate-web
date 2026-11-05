@@ -44,9 +44,10 @@ export function HeroJourney() {
   return (
     <motion.div
       initial={reduced ? false : { opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mt-10 w-full max-w-5xl overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-container/80 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-container/80 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
     >
       {/* Ambient glow */}
       <div className="pointer-events-none absolute -top-24 left-1/4 h-48 w-48 rounded-full bg-primary-container/15 blur-3xl" />
@@ -101,10 +102,11 @@ export function HeroJourney() {
               <motion.li
                 key={step.title}
                 initial={reduced ? false : { opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{
                   duration: 0.45,
-                  delay: reduced ? 0 : 0.28 + index * 0.08,
+                  delay: reduced ? 0 : index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="group relative"
@@ -156,12 +158,13 @@ export function HeroJourney() {
         {/* Bottom collaboration strip */}
         <motion.div
           initial={reduced ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.5 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           className="mt-6 flex flex-col items-center justify-between gap-3 rounded-xl border border-white/[0.05] bg-surface-container-lowest/60 px-4 py-3 sm:flex-row sm:px-5"
         >
           <p className="text-center text-[13px] text-on-surface-variant sm:text-left">
-            CRM’den B2C’ye kadar ürünler; kararlar, demolar ve revizyonlar{" "}
+            Kararlar, demolar ve revizyonlar{" "}
             <span className="text-on-surface">sizinle birlikte</span> ilerler.
           </p>
           <div className="flex items-center gap-2">

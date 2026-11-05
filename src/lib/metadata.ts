@@ -22,6 +22,11 @@ export function absoluteUrl(path = "") {
   return path.startsWith("http") ? path : `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+function mergeKeywords(extra?: string[]) {
+  const merged = [...SEO_KEYWORDS, ...(extra ?? [])];
+  return Array.from(new Set(merged.map((k) => k.trim()).filter(Boolean)));
+}
+
 export function createPageMetadata({
   title,
   description,
@@ -41,13 +46,14 @@ export function createPageMetadata({
     url: absoluteUrl(src),
     width: 1200,
     height: 630,
-    alt: fullTitle,
+    alt: `${SITE.name} — Özel yazılım geliştirme`,
   }));
 
   return {
-    title: fullTitle,
+    // Ana sayfa absolute; diğerleri layout template (`%s | MIRVATE`) ile birleşir
+    title: isHome ? { absolute: fullTitle } : title,
     description,
-    keywords: keywords?.length ? keywords : undefined,
+    keywords: mergeKeywords(keywords),
     authors: authors?.map((name) => ({ name })) ?? [{ name: SITE.name }],
     creator: SITE.name,
     publisher: SITE.name,
@@ -102,21 +108,27 @@ export function createPageMetadata({
 }
 
 export function organizationJsonLd() {
+  const primaryServices = SERVICES.slice(0, 6);
+
   return {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
+    "@id": absoluteUrl("/#organization"),
     name: SITE.name,
     legalName: SITE.name,
     url: SITE.url,
-    logo: absoluteUrl("/images/mirvate-logo-v2.png"),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/images/mirvate-logo-v2.png"),
+    },
     image: absoluteUrl("/opengraph-image"),
     description: SITE.description,
     email: SITE.email,
     slogan: SITE.tagline,
-    areaServed: {
-      "@type": "Country",
-      name: "Turkey",
-    },
+    areaServed: [
+      { "@type": "Country", name: "Turkey" },
+      "Worldwide",
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -127,21 +139,37 @@ export function organizationJsonLd() {
       },
     ],
     knowsAbout: [
+      "Özel yazılım geliştirme",
+      "Custom software development",
+      "Software engineering",
       "Mobil uygulama geliştirme",
       "Web uygulaması geliştirme",
       "Masaüstü uygulama geliştirme",
-      "iOS uygulama geliştirme",
-      "Android uygulama geliştirme",
-      "CRM",
-      "B2B platforms",
-      "B2C platforms",
-      "Software engineering",
+      "SaaS geliştirme",
+      "Backend API mimarisi",
       "React Native",
       "Next.js",
       "Electron",
       "ASP.NET Core",
       "Cloud & DevOps",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "MIRVATE Yazılım Hizmetleri",
+      itemListElement: primaryServices.map((service, index) => ({
+        "@type": "Offer",
+        position: index + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+          url: absoluteUrl(`/services#${service.slug}`),
+          provider: { "@id": absoluteUrl("/#organization") },
+          areaServed: "TR",
+          serviceType: service.title,
+        },
+      })),
+    },
   };
 }
 
@@ -149,15 +177,30 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
     name: SITE.name,
     url: SITE.url,
     description: SITE.description,
     inLanguage: "tr-TR",
-    publisher: {
-      "@type": "Organization",
-      name: SITE.name,
-      logo: absoluteUrl("/images/mirvate-logo-v2.png"),
-    },
+    publisher: { "@id": absoluteUrl("/#organization") },
+  };
+}
+
+export function webPageJsonLd(input: {
+  title: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": absoluteUrl(`${input.path}#webpage`),
+    url: absoluteUrl(input.path),
+    name: input.title,
+    description: input.description,
+    isPartOf: { "@id": absoluteUrl("/#website") },
+    about: { "@id": absoluteUrl("/#organization") },
+    inLanguage: "tr-TR",
   };
 }
 
@@ -178,20 +221,21 @@ export function servicesJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "MIRVATE Hizmetleri",
+    "@id": absoluteUrl("/services#service-list"),
+    name: "MIRVATE Özel Yazılım ve Uygulama Hizmetleri",
+    description:
+      "Özel yazılım geliştirme, mobil, web, masaüstü, backend ve entegrasyon hizmetleri.",
+    numberOfItems: SERVICES.length,
     itemListElement: SERVICES.map((service, index) => ({
       "@type": "ListItem",
       position: index + 1,
       item: {
         "@type": "Service",
+        "@id": absoluteUrl(`/services#${service.slug}`),
         name: service.title,
         description: service.description,
         url: absoluteUrl(`/services#${service.slug}`),
-        provider: {
-          "@type": "Organization",
-          name: SITE.name,
-          url: SITE.url,
-        },
+        provider: { "@id": absoluteUrl("/#organization") },
         areaServed: "TR",
         serviceType: service.title,
       },
@@ -217,6 +261,7 @@ export function articleJsonLd(input: {
     author: {
       "@type": "Organization",
       name: input.author,
+      url: SITE.url,
     },
     publisher: {
       "@type": "Organization",
@@ -226,7 +271,10 @@ export function articleJsonLd(input: {
         url: absoluteUrl("/images/mirvate-logo-v2.png"),
       },
     },
-    mainEntityOfPage: absoluteUrl(input.path),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(input.path),
+    },
     articleSection: input.category,
     inLanguage: "tr-TR",
     image: absoluteUrl("/opengraph-image"),
@@ -253,14 +301,19 @@ export function faqJsonLd(
 /** Site genelinde sık sorulan gerçekçi sorular — uydurma metrik yok */
 export const HOME_FAQS = [
   {
-    question: "MIRVATE hangi tür yazılımları geliştiriyor?",
+    question: "MIRVATE ne tür işler yapıyor?",
     answer:
-      "Mobil uygulama geliştirme (iOS/Android, React Native), web uygulaması ve SaaS geliştirme (Next.js/React), masaüstü uygulama geliştirme (Electron), CRM, B2B/B2C platformları ve backend çözümleri sunuyoruz.",
+      "Odak noktamız özel yazılım geliştirme. Markanız için mobil, web ve masaüstü uygulamalar ile backend ve entegrasyonları uçtan uca inşa ediyoruz.",
+  },
+  {
+    question: "Hazır bir ürününüz var mı?",
+    answer:
+      "Kendi SaaS ürünümüzü satmıyoruz. Farklı firmalar adına özel yazılım geliştiriyoruz; görünürlük ve markalama sizin tercihinize göre yönetilir.",
   },
   {
     question: "Mobil, web ve masaüstü uygulamayı birlikte mi geliştiriyorsunuz?",
     answer:
-      "Evet. Aynı iş mantığını web, mobil ve masaüstü kanallarına taşıyarak uçtan uca ürünler inşa ediyoruz. Tek başına mobil, web veya masaüstü projeleri de alıyoruz.",
+      "Evet. Aynı iş mantığını web, mobil ve masaüstü kanallarına taşıyabiliriz. Tek kanal (yalnızca mobil, web veya masaüstü) projeleri de alıyoruz.",
   },
   {
     question: "Süreç nasıl işliyor?",

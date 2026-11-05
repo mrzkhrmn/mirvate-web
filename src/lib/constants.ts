@@ -2,7 +2,7 @@ export const SITE = {
   name: "MIRVATE",
   tagline: "Engineering What's Next.",
   description:
-    "MIRVATE; mobil uygulama geliştirme, web uygulaması geliştirme, masaüstü yazılım, CRM, B2B ve B2C platformları sunan bir yazılım mühendisliği şirketidir.",
+    "MIRVATE; özel yazılım geliştirme odaklı bir mühendislik şirketidir. Mobil, web ve masaüstü uygulamaları keşiften canlıya alıma kadar birlikte inşa ederiz.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mirvate.com",
   locale: "tr_TR",
   email: "info@mirvate.com",
@@ -10,20 +10,21 @@ export const SITE = {
 
 /** Ana arama niyetleri — meta keywords + şema için ortak havuz */
 export const SEO_KEYWORDS = [
+  "özel yazılım geliştirme",
+  "özel yazılım şirketi",
+  "yazılım şirketi Türkiye",
+  "kurumsal yazılım geliştirme",
   "mobil uygulama geliştirme",
   "web uygulaması geliştirme",
   "masaüstü uygulama geliştirme",
+  "SaaS geliştirme",
   "iOS uygulama geliştirme",
   "Android uygulama geliştirme",
   "React Native",
   "Next.js",
   "Electron",
-  "özel yazılım geliştirme",
-  "CRM yazılımı",
-  "B2B platform geliştirme",
-  "B2C e-ticaret yazılımı",
-  "SaaS geliştirme",
-  "yazılım şirketi Türkiye",
+  ".NET yazılım geliştirme",
+  "backend API geliştirme",
   "MIRVATE",
 ] as const;
 
@@ -37,12 +38,12 @@ export const NAV_LINKS = [
 ] as const;
 
 export const FOOTER_SERVICES = [
-  { href: "/services#crm", label: "CRM Sistemleri" },
-  { href: "/services#b2b", label: "B2B Platformları" },
-  { href: "/services#b2c", label: "B2C & Müşteri Deneyimi" },
   { href: "/services#custom-software", label: "Özel Yazılım Geliştirme" },
-  { href: "/services#web-saas", label: "Web & SaaS Geliştirme" },
-  { href: "/services#mobile", label: "Mobil Uygulama Çözümleri" },
+  { href: "/services#mobile", label: "Mobil Uygulama" },
+  { href: "/services#web-saas", label: "Web & SaaS" },
+  { href: "/services#desktop", label: "Masaüstü Uygulama" },
+  { href: "/services#backend-api", label: "Backend & API" },
+  { href: "/services#integrations", label: "Entegrasyon & Otomasyon" },
 ] as const;
 
 export const FOOTER_EXPLORE = [
@@ -56,45 +57,45 @@ export const FOOTER_EXPLORE = [
 export const TECH_CAPABILITIES = [
   {
     id: "01",
-    title: "CRM & İş Uygulamaları",
+    title: "Özel Ürün Mimarisi",
     description:
-      "Satış, müşteri ilişkileri ve operasyon süreçlerini tek panelde toplayan özel CRM ve iş uygulamaları. Pipeline, lead yönetimi, görevler, raporlama ve ekip iş birliği uçtan uca tasarlanır.",
+      "Hazır kutuya sığmayan iş süreçleri için sıfırdan ürün mimarisi. Domain model, Clean Architecture ve uzun ömürlü kod tabanı ile markanıza özel yazılım kurarız.",
     icon: "users" as const,
     accent: "cyan" as const,
-    tags: ["CRM Çekirdeği", "Pipeline", "Lead & Deal", "Raporlama"],
+    tags: ["Domain Model", "Clean Architecture", "DDD", "Ürün Çekirdeği"],
   },
   {
     id: "02",
-    title: "B2B & B2C Platformları",
+    title: "Mobil Uygulama Mühendisliği",
     description:
-      "Kurumsal (B2B) sipariş, bayi ve tedarik portalları ile tüketici (B2C) mağaza, üyelik ve deneyim platformları. Rol tabanlı erişim, katalog, sepet ve çok kiracılı yapılar.",
-    icon: "store" as const,
+      "React Native ve Expo ile iOS/Android deneyimleri. Saha ekipleri, müşteri uygulamaları ve iç operasyon kanalları için çevrimdışı öncelikli mimari.",
+    icon: "smartphone" as const,
     accent: "cyan" as const,
-    tags: ["B2B Portal", "B2C Mağaza", "Bayi Ağı", "Multi-tenant"],
+    tags: ["React Native", "Expo", "iOS / Android", "Offline-first"],
   },
   {
     id: "03",
-    title: "Mobil Uygulama Mühendisliği",
+    title: "Web, SaaS & Masaüstü",
     description:
-      "React Native ve Expo ile yerel mobil deneyimler. Saha ekipleri, müşteri uygulamaları ve B2B/B2C mobil kanallar için çevrimdışı öncelikli mimari.",
-    icon: "smartphone" as const,
+      "Next.js ve React ile yönetim panelleri ve SaaS ürünleri; Electron ile masaüstü operasyon araçları. Tek iş mantığı, çoklu yüzey.",
+    icon: "globe" as const,
     accent: "cyan" as const,
-    tags: ["React Native", "Expo Services", "iOS / Android", "Hermes V8"],
+    tags: ["Next.js", "React", "Electron", "Admin Panel"],
   },
   {
     id: "04",
-    title: "Web, SaaS & Masaüstü",
+    title: "İş & Operasyon Uygulamaları",
     description:
-      "Next.js ve React ile yönetim panelleri, SaaS ürünleri; Electron ile masaüstü operasyon araçları. Tek iş mantığı, çoklu yüzey.",
-    icon: "globe" as const,
+      "Satış, müşteri ilişkileri ve iç süreç panoları. İhtiyaç halinde CRM benzeri pipeline, görev ve raporlama katmanlarını ürüne gömülü tasarlarız.",
+    icon: "store" as const,
     accent: "violet" as const,
-    tags: ["Next.js", "React 19", "Electron.js", "Admin Panel"],
+    tags: ["Operasyon Paneli", "Pipeline", "Raporlama", "Ekip İş Akışı"],
   },
   {
     id: "05",
     title: "Backend & .NET Core",
     description:
-      "C# ve .NET 8 / 9 üzerinde mikroservisler. CRM, B2B/B2C ve ödeme akışları için Clean Architecture, gRPC ve optimize EF Core sorguları.",
+      "C# ve .NET 8 / 9 üzerinde mikroservisler. Ödeme, sipariş ve iş akışları için Clean Architecture, gRPC ve optimize EF Core sorguları.",
     icon: "terminal" as const,
     accent: "violet" as const,
     tags: ["C# .NET 9", "ASP.NET Core", "gRPC / REST", "EF Core"],
@@ -103,7 +104,7 @@ export const TECH_CAPABILITIES = [
     id: "06",
     title: "Altyapı & Entegrasyonlar",
     description:
-      "PostgreSQL, Kubernetes, RabbitMQ ve ödeme / ERP / muhasebe entegrasyonları. Dağıtık sistemlerde güvenilir olay güdümlü koordinasyon.",
+      "PostgreSQL, Kubernetes, RabbitMQ ve ERP / muhasebe / ödeme köprüleri. Dağıtık sistemlerde güvenilir olay güdümlü koordinasyon.",
     icon: "database" as const,
     accent: "violet" as const,
     tags: ["PostgreSQL", "Kubernetes", "RabbitMQ", "ERP / Ödeme"],
@@ -112,56 +113,23 @@ export const TECH_CAPABILITIES = [
 
 export const SERVICES = [
   {
-    slug: "crm",
-    title: "CRM Sistemleri",
-    description:
-      "Satış hunisi, müşteri kartı, görevler ve raporlamayı tek çatı altında toplayan özel CRM çözümleri.",
-    icon: "users" as const,
-    accent: "cyan" as const,
-    meta: "Lead • Pipeline • Raporlama",
-    details:
-      "Hazır kutudan çıkmayan, işinize özel CRM’ler geliştiriyoruz. Lead ve fırsat yönetimi, aktivite takibi, ekip yetkileri, panolar ve mevcut ERP / muhasebe / iletişim araçlarıyla entegrasyon uçtan uca kurulur.",
-  },
-  {
-    slug: "b2b",
-    title: "B2B Platformları",
-    description:
-      "Bayi, tedarikçi ve kurumsal müşteri portalları; sipariş, fiyat listesi ve onay akışlarıyla.",
-    icon: "briefcase" as const,
-    accent: "cyan" as const,
-    meta: "Bayi Portalı • Sipariş • Onay",
-    details:
-      "B2B satış ve operasyon için çok kiracılı portallar tasarlıyoruz. Rol ve firma bazlı fiyatlandırma, stok görünürlüğü, toplu sipariş, teklif/onay süreçleri ve saha ekipleri için mobil destek dahil.",
-  },
-  {
-    slug: "b2c",
-    title: "B2C & Müşteri Deneyimi",
-    description:
-      "Tüketiciye dönük mağaza, üyelik, kampanya ve omnichannel deneyim platformları.",
-    icon: "shopping-bag" as const,
-    accent: "cyan" as const,
-    meta: "Mağaza • Üyelik • Kampanya",
-    details:
-      "B2C e-ticaret ve müşteri deneyimi ürünleri geliştiriyoruz. Katalog, sepet, ödeme, üyelik, sadakat, bildirimler ve web + mobil tutarlı deneyim; analitik ve kişiselleştirme altyapısıyla birlikte.",
-  },
-  {
     slug: "custom-software",
     title: "Özel Yazılım Geliştirme",
     description:
-      "Sıfırdan tasarlanan, iş süreçlerinize birebir uyumlu ve teknik mükemmelliğe sahip kurumsal mimariler.",
+      "Sıfırdan tasarlanan, iş süreçlerinize birebir uyumlu kurumsal ürünler ve uzun ömürlü mimariler.",
     icon: "cpu" as const,
     accent: "cyan" as const,
     meta: "Kurumsal Çekirdek • C# / TypeScript",
     details:
-      "İş süreçlerinize özel, ölçeklenebilir yazılım mimarileri tasarlıyor ve geliştiriyoruz. CRM’den operasyon panellerine kadar Clean Architecture ve DDD ile uzun ömürlü ürünler inşa ederiz.",
+      "Hazır paketlere sığmayan ihtiyaçlar için özel yazılım geliştiriyoruz. Domain odaklı mimari, Clean Architecture ve DDD ile ölçeklenebilir ürünler inşa ederiz.",
   },
   {
     slug: "mobile",
     title: "Mobil Uygulama Geliştirme",
     description:
-      "iOS ve Android mobil uygulama geliştirme: B2B saha, B2C müşteri ve iç operasyon.",
+      "iOS ve Android için saha, müşteri ve iç operasyon uygulamaları.",
     icon: "smartphone" as const,
-    accent: "violet" as const,
+    accent: "cyan" as const,
     meta: "React Native • Expo",
     details:
       "React Native ve Expo ile native performanslı mobil uygulama geliştirme. Offline-first, push bildirimleri ve mağaza yayın süreçlerini uçtan uca yönetiriz.",
@@ -172,18 +140,18 @@ export const SERVICES = [
     description:
       "Çok kiracılı SaaS, yönetim panelleri ve bulut iş uygulamaları.",
     icon: "cloud" as const,
-    accent: "violet" as const,
+    accent: "cyan" as const,
     meta: "Next.js • Bulut Mimarisi",
     details:
-      "React, Next.js ve Vite ile yüksek performanslı web ve SaaS ürünleri geliştiriyoruz. Multi-tenant, RBAC ve CRM / B2B / B2C panelleri için uygun mimariler kurarız.",
+      "React, Next.js ve Vite ile yüksek performanslı web ve SaaS ürünleri geliştiriyoruz. Multi-tenant, RBAC ve operasyon panelleri için uygun mimariler kurarız.",
   },
   {
     slug: "desktop",
     title: "Masaüstü Uygulama Geliştirme",
     description:
-      "Electron ve yerel yığınlarla masaüstü uygulama geliştirme: yoğun veri işleme ve operasyon panelleri.",
+      "Electron ve yerel yığınlarla yoğun veri işleme ve operasyon panelleri.",
     icon: "laptop" as const,
-    accent: "violet" as const,
+    accent: "cyan" as const,
     meta: "Electron • Yerel Sistemler",
     details:
       "Electron.js ile Windows, macOS ve Linux uygulamaları geliştiriyoruz. Otomatik güncelleme, dosya sistemi erişimi ve yerel entegrasyonlar dahil.",
@@ -192,7 +160,7 @@ export const SERVICES = [
     slug: "backend-api",
     title: "Backend & API Mimarisi",
     description:
-      "CRM, B2B/B2C ve ödeme akışlarını besleyen düşük gecikmeli API’ler.",
+      "Ürün ve ödeme akışlarını besleyen düşük gecikmeli, güvenli API’ler.",
     icon: "server" as const,
     accent: "violet" as const,
     meta: ".NET 9 • gRPC / REST",
@@ -200,10 +168,43 @@ export const SERVICES = [
       "C#, ASP.NET Core ve EF Core ile güvenli, test edilebilir API’ler tasarlıyoruz. REST, gRPC ve event-driven desenleri birlikte kullanırız.",
   },
   {
+    slug: "crm",
+    title: "CRM Sistemleri",
+    description:
+      "Satış hunisi, müşteri kartı, görevler ve raporlamayı tek çatı altında toplayan özel çözümler.",
+    icon: "users" as const,
+    accent: "violet" as const,
+    meta: "Lead • Pipeline • Raporlama",
+    details:
+      "Hazır kutudan çıkmayan, işinize özel CRM’ler geliştiriyoruz. Lead ve fırsat yönetimi, aktivite takibi, ekip yetkileri, panolar ve mevcut ERP / muhasebe araçlarıyla entegrasyon dahil.",
+  },
+  {
+    slug: "b2b",
+    title: "B2B Platformları",
+    description:
+      "Bayi, tedarikçi ve kurumsal müşteri portalları; sipariş, fiyat listesi ve onay akışlarıyla.",
+    icon: "briefcase" as const,
+    accent: "violet" as const,
+    meta: "Bayi Portalı • Sipariş • Onay",
+    details:
+      "Kurumsal satış ve operasyon için çok kiracılı portallar tasarlıyoruz. Rol ve firma bazlı fiyatlandırma, stok görünürlüğü, toplu sipariş ve onay süreçleri dahil.",
+  },
+  {
+    slug: "b2c",
+    title: "B2C & Müşteri Deneyimi",
+    description:
+      "Tüketiciye dönük mağaza, üyelik, kampanya ve omnichannel deneyim platformları.",
+    icon: "shopping-bag" as const,
+    accent: "violet" as const,
+    meta: "Mağaza • Üyelik • Kampanya",
+    details:
+      "E-ticaret ve müşteri deneyimi ürünleri geliştiriyoruz. Katalog, sepet, ödeme, üyelik, sadakat ve web + mobil tutarlı deneyim; analitik altyapısıyla birlikte.",
+  },
+  {
     slug: "payments",
     title: "Ödeme Sistemleri & FinTek",
     description:
-      "B2B faturalama ve B2C tahsilat için güvenli ödeme altyapıları.",
+      "Faturalama ve tahsilat için güvenli ödeme altyapıları.",
     icon: "credit-card" as const,
     accent: "violet" as const,
     meta: "Stripe • İyzico • Abonelik",
@@ -225,7 +226,7 @@ export const SERVICES = [
     slug: "integrations",
     title: "Sistem Entegrasyonu & Otomasyon",
     description:
-      "CRM, ERP, muhasebe ve pazarlama araçları arasında kesintisiz veri köprüleri.",
+      "ERP, muhasebe, ödeme ve pazarlama araçları arasında kesintisiz veri köprüleri.",
     icon: "git-branch" as const,
     accent: "violet" as const,
     meta: "RabbitMQ • ERP • Webhook",
@@ -331,15 +332,15 @@ export const WHY_PILLARS = [
 ] as const;
 
 export const PROJECT_TYPES = [
-  { value: "ecosystem", label: "Kapsamlı Ekosistem (CRM + Web + Mobil + Backend)" },
-  { value: "crm", label: "CRM Sistemi" },
-  { value: "b2b", label: "B2B Platformu (Bayi / Tedarik / Portal)" },
-  { value: "b2c", label: "B2C Platformu (Mağaza / Üyelik / Deneyim)" },
   { value: "custom-software", label: "Özel Yazılım Geliştirme" },
   { value: "mobile", label: "Mobil Uygulama (React Native / iOS & Android)" },
   { value: "web-saas", label: "Web & SaaS Platformu (React / Next.js)" },
   { value: "desktop", label: "Masaüstü Uygulaması (Electron.js / OS Entegre)" },
   { value: "backend-api", label: "Backend & API Geliştirme (C# / .NET 9)" },
+  { value: "ecosystem", label: "Kapsamlı Ürün (Web + Mobil + Backend)" },
+  { value: "crm", label: "CRM Sistemi" },
+  { value: "b2b", label: "B2B Platformu (Bayi / Tedarik / Portal)" },
+  { value: "b2c", label: "B2C Platformu (Mağaza / Üyelik / Deneyim)" },
   { value: "payments", label: "Ödeme Sistemleri & FinTek" },
   { value: "cloud-devops", label: "Bulut Altyapısı, DevOps & Mikroservisler" },
   { value: "integrations", label: "Sistem Entegrasyonu & Otomasyon" },
@@ -399,7 +400,7 @@ export const ABOUT_VALUES = [
   {
     title: "Misyon",
     description:
-      "Startuplar ve işletmeler için CRM, B2B/B2C platformları ile mobil, web, masaüstü ve backend çözümlerini uçtan uca hayata geçirmek.",
+      "Startuplar ve işletmeler için özel yazılımı uçtan uca hayata geçirmek; mobil, web, masaüstü ve backend yüzeylerini ihtiyaca göre birleştirmek.",
   },
   {
     title: "Mühendislik Yaklaşımı",

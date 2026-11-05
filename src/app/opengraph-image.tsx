@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "MIRVATE — Engineering What's Next.";
+export const alt = "MIRVATE — Özel yazılım geliştirme";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,7 +44,7 @@ export default function OpenGraphImage() {
               maxWidth: 900,
             }}
           >
-            Engineering What&rsquo;s Next.
+            Özel Yazılım Geliştirme
           </div>
           <div
             style={{
@@ -54,7 +54,7 @@ export default function OpenGraphImage() {
               maxWidth: 860,
             }}
           >
-            Mobil · Web · Masaüstü uygulama geliştirme · CRM · B2B · B2C
+            Mobil · Web · Masaüstü · Engineering What&rsquo;s Next.
           </div>
         </div>
 

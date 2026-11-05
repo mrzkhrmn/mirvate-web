@@ -4,16 +4,16 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Teknolojiler | React Native, Next.js, Electron",
+  title: "Teknolojiler",
   description:
-    "Mobil uygulama (React Native), web uygulaması (Next.js), masaüstü (Electron), .NET, CRM/B2B/B2C yığını ve bulut altyapısı.",
+    "Özel yazılım için React Native, Next.js, Electron, .NET ve bulut altyapısı. Doğru yığını ihtiyaca göre seçeriz.",
   path: "/technologies",
   keywords: [
-    "React Native mobil uygulama",
-    "Next.js web uygulaması",
-    "Electron masaüstü uygulama",
+    "React Native",
+    "Next.js",
+    "Electron",
     "ASP.NET Core",
-    "iOS Android geliştirme",
+    "özel yazılım teknolojileri",
     "Kubernetes",
   ],
 });
@@ -33,11 +33,11 @@ export default function TechnologiesPage() {
             Teknoloji Yığını
           </span>
           <h1 className="mt-2 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-on-surface md:text-6xl">
-            Tek Vizyon. CRM, B2B, B2C ve Ötesi.
+            Tek vizyon. Doğru yığın.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-7 text-on-surface-variant">
-            Bu teknolojiler kabiliyetlerimizdir; her projede hepsi kullanılmaz. CRM’den
-            B2C mağazaya kadar ihtiyaca göre doğru yığını birlikte seçeriz.
+            Bu teknolojiler kabiliyetlerimizdir; her projede hepsi kullanılmaz.
+            Özel ürüne göre doğru yığını birlikte seçeriz.
           </p>
         </Container>
       </section>

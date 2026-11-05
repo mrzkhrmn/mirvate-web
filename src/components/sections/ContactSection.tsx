@@ -29,7 +29,7 @@ export function ContactSection() {
                 Birlikte konuşalım.
               </h2>
               <p className="mt-2 leading-7 text-on-surface-variant">
-                CRM, B2B/B2C platformu veya özel yazılım fikrinizi paylaşın. İlk teknik
+                Özel yazılım veya ürün fikrinizi paylaşın. İlk teknik
                 fizibilite ve yol haritası notlarını 24 saat içinde sunarız.
               </p>
 

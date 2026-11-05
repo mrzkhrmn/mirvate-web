@@ -3,7 +3,7 @@ import { SITE } from "@/lib/constants";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: SITE.name,
+    name: `${SITE.name} — Özel Yazılım Geliştirme`,
     short_name: SITE.name,
     description: SITE.description,
     start_url: "/",
@@ -11,5 +11,6 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#0d0e11",
     theme_color: "#00f0ff",
     lang: "tr",
+    categories: ["business", "productivity"],
   };
 }

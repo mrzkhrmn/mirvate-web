@@ -19,6 +19,7 @@ import {
   breadcrumbJsonLd,
   createPageMetadata,
   servicesJsonLd,
+  webPageJsonLd,
 } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
@@ -37,20 +38,17 @@ const iconMap = {
 } as const;
 
 export const metadata = createPageMetadata({
-  title: "Hizmetler | Mobil, Web, Masaüstü, CRM",
+  title: "Hizmetler",
   description:
-    "Mobil uygulama geliştirme, web uygulaması geliştirme, masaüstü yazılım, CRM, B2B/B2C, backend, ödeme ve DevOps hizmetleri.",
+    "Özel yazılım geliştirme, mobil ve web uygulamaları, masaüstü, backend, entegrasyon ve DevOps. MIRVATE ile uçtan uca mühendislik.",
   path: "/services",
   keywords: [
+    "özel yazılım hizmetleri",
     "mobil uygulama geliştirme",
     "web uygulaması geliştirme",
     "masaüstü uygulama geliştirme",
-    "iOS Android uygulama",
-    "CRM yazılımı",
-    "B2B platform geliştirme",
-    "B2C e-ticaret yazılımı",
     "SaaS geliştirme",
-    "özel yazılım şirketi",
+    "backend API geliştirme",
   ],
 });
 
@@ -63,6 +61,12 @@ export default function ServicesPage() {
             { name: "Ana Sayfa", path: "/" },
             { name: "Hizmetler", path: "/services" },
           ]),
+          webPageJsonLd({
+            title: "Hizmetler",
+            description:
+              "Özel yazılım geliştirme, mobil, web, masaüstü ve backend hizmetleri.",
+            path: "/services",
+          }),
           servicesJsonLd(),
         ]}
       />
@@ -73,11 +77,12 @@ export default function ServicesPage() {
             Hizmetler
           </span>
           <h1 className="mt-2 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-on-surface md:text-6xl">
-            CRM, B2B, B2C ve Ötesi — Uçtan Uca.
+            Özel yazılım. Uçtan uca mühendislik.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-7 text-on-surface-variant">
-            Müşteri ilişkilerinden kurumsal portallara ve tüketici deneyimine; keşiften
-            canlıya alıma kadar tek mühendislik ekibiyle ilerleriz.
+            Odak noktamız işinize özel ürün geliştirmek. Mobil, web, masaüstü ve
+            ihtiyaç duyulan iş uygulamalarını keşiften canlıya alıma kadar tek
+            ekiple ilerletiriz.
           </p>
 
           <div className="mt-12 space-y-6">

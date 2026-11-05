@@ -1,4 +1,6 @@
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ClientFocusSection } from "@/components/sections/ClientFocusSection";
+import { JourneySection } from "@/components/sections/JourneySection";
 import { TechnologiesSection } from "@/components/sections/TechnologiesSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -12,13 +14,14 @@ import {
   faqJsonLd,
   HOME_FAQS,
   servicesJsonLd,
+  webPageJsonLd,
 } from "@/lib/metadata";
-import { SITE, SEO_KEYWORDS } from "@/lib/constants";
+import { SEO_KEYWORDS, SITE } from "@/lib/constants";
 
 export const metadata = createPageMetadata({
-  title: "Mobil, Web ve Masaüstü Uygulama Geliştirme",
+  title: "Özel Yazılım Geliştirme",
   description:
-    "Mobil uygulama geliştirme, web uygulaması geliştirme ve masaüstü yazılım; CRM, B2B ve B2C platformlarıyla uçtan uca. MIRVATE ile ürününüzü birlikte inşa edin.",
+    "Özel yazılım geliştirme şirketi MIRVATE: mobil, web ve masaüstü uygulamaları şeffaf sprintlerle birlikte inşa ediyoruz.",
   path: "/",
   keywords: [...SEO_KEYWORDS],
 });
@@ -28,15 +31,22 @@ export default function HomePage() {
     <div className="flex w-full flex-col">
       <JsonLd
         data={[
+          webPageJsonLd({
+            title: `${SITE.name} — Özel Yazılım Geliştirme`,
+            description: SITE.description,
+            path: "/",
+          }),
           servicesJsonLd(),
           faqJsonLd([...HOME_FAQS]),
         ]}
       />
       <HeroSection />
+      <ClientFocusSection />
+      <JourneySection />
       <TechnologiesSection />
       <ServicesSection />
       <ProcessSection />
-      {/* Proje vitrini — henüz gerçek proje yok; veri geldiğinde açılacak
+      {/* Proje vitrini — henüz gerçek / gösterilebilir proje yok
       <ProjectsSection />
       */}
       <AboutSection />

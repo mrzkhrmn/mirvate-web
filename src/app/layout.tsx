@@ -42,12 +42,16 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: SITE.tagline,
+    title: "Özel Yazılım Geliştirme",
     description: SITE.description,
     path: "/",
     keywords: [...SEO_KEYWORDS],
   }),
   metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.name} — Özel Yazılım Geliştirme`,
+    template: `%s | ${SITE.name}`,
+  },
   applicationName: SITE.name,
   referrer: "origin-when-cross-origin",
   formatDetection: {
@@ -57,6 +61,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
 };
 

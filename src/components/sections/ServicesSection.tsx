@@ -37,15 +37,15 @@ export function ServicesSection() {
         <div className="mb-10 flex flex-col justify-between gap-4 md:mb-12 md:flex-row md:items-end">
           <div>
             <span className="font-[family-name:var(--font-mono)] text-xs font-medium uppercase tracking-widest text-primary">
-              Kapsamlı Mühendislik Yetkinlikleri
+              Mühendislik hizmetleri
             </span>
             <h2 className="mt-2 font-[family-name:var(--font-headline)] text-3xl font-bold tracking-tight text-on-surface md:text-5xl">
-              CRM’den B2B/B2C’ye, Uçtan Uca Teknoloji.
+              Özel yazılımdan çoklu yüzeye.
             </h2>
           </div>
           <p className="max-w-md text-[15px] leading-6 text-on-surface-variant">
-            Müşteri ilişkilerinden satış portallarına ve tüketici deneyimine kadar; işinize
-            özel yazılımı tek mühendislik ekibiyle hayata geçiriyoruz.
+            Odak noktamız işinize özel ürün geliştirmek. Mobil, web, masaüstü ve
+            ihtiyaç duyulan iş uygulamalarını tek ekiple hayata geçiriyoruz.
           </p>
         </div>
 

@@ -1,15 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { Columns2, PenTool, RefreshCw } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Parallax, ParallaxSection } from "@/components/motion/Parallax";
 import { PROCESS_STEPS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function ProcessSection() {
   return (
-    <section id="surec" className="relative w-full bg-surface-container-lowest py-16 md:py-24">
+    <ParallaxSection
+      id="surec"
+      className="w-full bg-surface-container-lowest py-16 md:py-24"
+    >
       <Container>
-        <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+        <Parallax offset={28} className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <span className="font-[family-name:var(--font-mono)] text-xs font-medium uppercase tracking-widest text-primary">
             Şeffaf Mühendislik Süreci
           </span>
@@ -21,7 +27,7 @@ export function ProcessSection() {
             revizyonları, düzenli demolar ve canlı test ortamlarıyla süreci sizinle
             birlikte yürütüyoruz.
           </p>
-        </div>
+        </Parallax>
 
         <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
           {PROCESS_STEPS.map((step, i) => {
@@ -64,8 +70,8 @@ export function ProcessSection() {
           })}
         </div>
 
-        {/* Design iteration showcase */}
-        <Reveal className="relative mt-10 overflow-hidden rounded-2xl border border-outline-variant/40 bg-surface-container/90 p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] backdrop-blur-xl md:mt-12 md:p-6">
+        <Parallax offset={40} speed={0.7} className="mt-10 md:mt-12">
+        <Reveal className="relative overflow-hidden rounded-2xl border border-outline-variant/40 bg-surface-container/90 p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] backdrop-blur-xl md:p-6">
           <div className="flex flex-col justify-between gap-4 border-b border-outline-variant/30 pb-4 md:flex-row md:items-center">
             <div className="flex items-center gap-3">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary-container/30 bg-primary-container/15 px-2 py-1 font-[family-name:var(--font-mono)] text-xs text-primary">
@@ -117,7 +123,8 @@ export function ProcessSection() {
             </div>
           </div>
         </Reveal>
+        </Parallax>
       </Container>
-    </section>
+    </ParallaxSection>
   );
 }

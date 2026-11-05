@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Smartphone,
   Globe,
@@ -9,6 +11,7 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Parallax, ParallaxSection } from "@/components/motion/Parallax";
 import { TECH_CAPABILITIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -23,21 +26,24 @@ const iconMap = {
 
 export function TechnologiesSection() {
   return (
-    <section id="tech-ecosystem" className="relative w-full bg-surface-container-low py-16 md:py-24">
+    <ParallaxSection
+      id="tech-ecosystem"
+      className="w-full bg-surface-container-low py-16 md:py-24"
+    >
       <Container>
-        <div className="mx-auto mb-10 flex max-w-3xl flex-col items-center text-center md:mb-12">
+        <Parallax offset={30} className="mx-auto mb-10 flex max-w-3xl flex-col items-center text-center md:mb-12">
           <div className="mb-2 inline-flex items-center gap-2 rounded bg-surface-container px-2 py-1 font-[family-name:var(--font-mono)] text-xs font-medium uppercase tracking-wider text-primary">
             <Network className="h-3.5 w-3.5" />
             Teknoloji Ekosistemi
           </div>
           <h2 className="font-[family-name:var(--font-headline)] text-3xl font-bold tracking-tight text-on-surface md:text-5xl">
-            Tek Vizyon. CRM, B2B, B2C ve Ötesi.
+            Tek vizyon. Doğru yığın.
           </h2>
           <p className="mt-2 text-[15px] leading-6 text-on-surface-variant">
-            İş uygulamalarından mobil ve bulut altyapısına kadar; satış, operasyon ve müşteri
-            deneyimini aynı mühendislik disiplininde birleştiriyoruz.
+            Özel ürün mimarisinden mobil, web ve bulut altyapısına kadar ihtiyaca
+            göre seçilen teknolojilerle aynı disiplin içinde ilerleriz.
           </p>
-        </div>
+        </Parallax>
 
         <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TECH_CAPABILITIES.map((card, i) => {
@@ -60,7 +66,7 @@ export function TechnologiesSection() {
                       isViolet ? "text-secondary" : "text-primary",
                     )}
                   >
-                    Platform Çekirdeği {card.id}
+                    Kabiliyet {card.id}
                   </span>
                   <h3 className="mt-1 mb-2 font-[family-name:var(--font-headline)] text-2xl font-semibold text-on-surface">
                     {card.title}
@@ -91,6 +97,6 @@ export function TechnologiesSection() {
           })}
         </div>
       </Container>
-    </section>
+    </ParallaxSection>
   );
 }
