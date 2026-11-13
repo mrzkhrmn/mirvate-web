@@ -42,14 +42,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Özel Yazılım Geliştirme",
+    title: "Özel Yazılım & Elektronik Mühendislik",
     description: SITE.description,
     path: "/",
     keywords: [...SEO_KEYWORDS],
   }),
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — Özel Yazılım Geliştirme`,
+    default: `${SITE.name} — Özel Yazılım & Elektronik Mühendislik`,
     template: `%s | ${SITE.name}`,
   },
   applicationName: SITE.name,

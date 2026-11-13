@@ -6,14 +6,16 @@ import { breadcrumbJsonLd, createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Teknolojiler",
   description:
-    "Özel yazılım için React Native, Next.js, Electron, .NET ve bulut altyapısı. Doğru yığını ihtiyaca göre seçeriz.",
+    "React Native, Next.js, .NET, STM32/ESP32 gömülü yığın ve bulut altyapısı. Doğru yığını ihtiyaca göre seçeriz.",
   path: "/technologies",
   keywords: [
     "React Native",
     "Next.js",
     "Electron",
     "ASP.NET Core",
-    "özel yazılım teknolojileri",
+    "STM32",
+    "ESP32",
+    "gömülü yazılım",
     "Kubernetes",
   ],
 });
@@ -37,7 +39,7 @@ export default function TechnologiesPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-7 text-on-surface-variant">
             Bu teknolojiler kabiliyetlerimizdir; her projede hepsi kullanılmaz.
-            Özel ürüne göre doğru yığını birlikte seçeriz.
+            Yazılım veya elektronik ürüne göre doğru yığını birlikte seçeriz.
           </p>
         </Container>
       </section>

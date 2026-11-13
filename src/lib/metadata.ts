@@ -142,6 +142,11 @@ export function organizationJsonLd() {
       "Özel yazılım geliştirme",
       "Custom software development",
       "Software engineering",
+      "Elektronik kart tasarımı",
+      "PCB tasarımı",
+      "Gömülü yazılım geliştirme",
+      "Embedded software",
+      "Ürün Ar-Ge",
       "Mobil uygulama geliştirme",
       "Web uygulaması geliştirme",
       "Masaüstü uygulama geliştirme",
@@ -155,7 +160,7 @@ export function organizationJsonLd() {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "MIRVATE Yazılım Hizmetleri",
+      name: "MIRVATE Mühendislik Hizmetleri",
       itemListElement: primaryServices.map((service, index) => ({
         "@type": "Offer",
         position: index + 1,
@@ -222,9 +227,9 @@ export function servicesJsonLd() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": absoluteUrl("/services#service-list"),
-    name: "MIRVATE Özel Yazılım ve Uygulama Hizmetleri",
+    name: "MIRVATE Yazılım ve Elektronik Hizmetleri",
     description:
-      "Özel yazılım geliştirme, mobil, web, masaüstü, backend ve entegrasyon hizmetleri.",
+      "Özel yazılım, gömülü sistem, elektronik kart, PCB ve ürün Ar-Ge hizmetleri.",
     numberOfItems: SERVICES.length,
     itemListElement: SERVICES.map((service, index) => ({
       "@type": "ListItem",
@@ -303,22 +308,22 @@ export const HOME_FAQS = [
   {
     question: "MIRVATE ne tür işler yapıyor?",
     answer:
-      "Odak noktamız özel yazılım geliştirme. Markanız için mobil, web ve masaüstü uygulamalar ile backend ve entegrasyonları uçtan uca inşa ediyoruz.",
+      "Özel yazılım (mobil, web, masaüstü, backend) ile elektronik kart tasarımı, gömülü yazılım ve ürün Ar-Ge’yi bir arada sunuyoruz. Kapsamı ihtiyacınıza göre birlikte seçeriz.",
   },
   {
     question: "Hazır bir ürününüz var mı?",
     answer:
-      "Kendi SaaS ürünümüzü satmıyoruz. Farklı firmalar adına özel yazılım geliştiriyoruz; görünürlük ve markalama sizin tercihinize göre yönetilir.",
+      "Kendi vitrin ürünümüzü satmıyoruz. Farklı firmalar adına yazılım ve elektronik ürün geliştiriyoruz; görünürlük ve markalama sizin tercihinize göre yönetilir.",
   },
   {
-    question: "Mobil, web ve masaüstü uygulamayı birlikte mi geliştiriyorsunuz?",
+    question: "Yalnızca yazılım veya yalnızca elektronik kart da yaptırabilir miyim?",
     answer:
-      "Evet. Aynı iş mantığını web, mobil ve masaüstü kanallarına taşıyabiliriz. Tek kanal (yalnızca mobil, web veya masaüstü) projeleri de alıyoruz.",
+      "Evet. Tek katman (ör. yalnızca mobil uygulama veya yalnızca PCB tasarımı) ya da yazılım + donanımın birlikte olduğu uçtan uca ürün projeleri alıyoruz.",
   },
   {
     question: "Süreç nasıl işliyor?",
     answer:
-      "Keşif, mimari, esnek tasarım, şeffaf sprintler, canlıya alma ve birlikte büyüme adımlarıyla ilerliyoruz. Her aşamada sizinle birlikte karar alırız.",
+      "Keşif, mimari, tasarım/prototip, şeffaf sprintler, doğrulama ve teslim adımlarıyla ilerliyoruz. Her aşamada sizinle birlikte karar alırız.",
   },
   {
     question: "Proje talebi nasıl iletilir?",

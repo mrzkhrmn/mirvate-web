@@ -8,6 +8,7 @@ import {
   Network,
   Users,
   Store,
+  CircuitBoard,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -22,6 +23,7 @@ const iconMap = {
   database: Database,
   users: Users,
   store: Store,
+  circuit: CircuitBoard,
 } as const;
 
 export function TechnologiesSection() {
@@ -40,7 +42,7 @@ export function TechnologiesSection() {
             Tek vizyon. Doğru yığın.
           </h2>
           <p className="mt-2 text-[15px] leading-6 text-on-surface-variant">
-            Özel ürün mimarisinden mobil, web ve bulut altyapısına kadar ihtiyaca
+            Özel üründen mobil, web, bulut ve gömülü sistemlere kadar ihtiyaca
             göre seçilen teknolojilerle aynı disiplin içinde ilerleriz.
           </p>
         </Parallax>

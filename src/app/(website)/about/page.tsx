@@ -7,11 +7,12 @@ import { breadcrumbJsonLd, createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Hakkımızda",
   description:
-    "MIRVATE; özel yazılım geliştirme odaklı mühendislik şirketi. Şeffaf sprintler, esnek tasarım ve uçtan uca ürün geliştirme.",
+    "MIRVATE; özel yazılım, gömülü sistem ve elektronik kart tasarımını birleştiren mühendislik şirketi.",
   path: "/about",
   keywords: [
     "özel yazılım şirketi",
-    "yazılım mühendisliği şirketi",
+    "elektronik mühendislik",
+    "gömülü yazılım şirketi",
     "MIRVATE hakkında",
   ],
 });
@@ -31,12 +32,12 @@ export default function AboutPage() {
             Hakkımızda
           </span>
           <h1 className="mt-2 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-on-surface md:text-6xl">
-            Yazılımı Birlikte Mühendislik Disipliniyle İnşa Ediyoruz.
+            Yazılım ve elektroniği birlikte inşa ediyoruz.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-7 text-on-surface-variant">
-            MIRVATE, işinize özel yazılım geliştirir. Mobil, web ve masaüstü
-            yüzeylerini ihtiyaca göre birleştirir; keşiften canlıya alıma kadar
-            uçtan uca ürün inşa ederiz.
+            MIRVATE; özel yazılım, gömülü sistem ve elektronik kart tasarımını
+            ihtiyaca göre birleştirir. Keşiften teslime kadar uçtan uca ürün
+            geliştiririz.
           </p>
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">

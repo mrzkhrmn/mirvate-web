@@ -19,9 +19,9 @@ import {
 import { SEO_KEYWORDS, SITE } from "@/lib/constants";
 
 export const metadata = createPageMetadata({
-  title: "Özel Yazılım Geliştirme",
+  title: "Özel Yazılım & Elektronik Mühendislik",
   description:
-    "Özel yazılım geliştirme şirketi MIRVATE: mobil, web ve masaüstü uygulamaları şeffaf sprintlerle birlikte inşa ediyoruz.",
+    "MIRVATE: özel yazılım, gömülü sistem ve elektronik kart tasarımı. Mobil, web, masaüstü ve ürün Ar-Ge’yi birlikte inşa ediyoruz.",
   path: "/",
   keywords: [...SEO_KEYWORDS],
 });
@@ -32,7 +32,7 @@ export default function HomePage() {
       <JsonLd
         data={[
           webPageJsonLd({
-            title: `${SITE.name} — Özel Yazılım Geliştirme`,
+            title: `${SITE.name} — Özel Yazılım & Elektronik Mühendislik`,
             description: SITE.description,
             path: "/",
           }),

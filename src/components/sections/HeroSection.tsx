@@ -29,7 +29,7 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.22 }}
           className="mt-5 font-[family-name:var(--font-mono)] text-xs font-medium tracking-[0.22em] text-primary uppercase"
         >
-          Özel Yazılım · Mobil · Web · Masaüstü
+          Özel Yazılım · Gömülü Sistem · Elektronik Kart
         </motion.p>
 
         <motion.h1
@@ -48,8 +48,8 @@ export function HeroSection() {
           transition={{ duration: 0.55, delay: 0.4 }}
           className="mt-6 max-w-xl text-base leading-7 text-on-surface-variant md:text-lg"
         >
-          İşinize özel yazılım geliştiriyoruz. Mobil, web ve masaüstü yüzeylerini
-          şeffaf sprintlerle, omuz omuza hayata geçiriyoruz.
+          Özel yazılım, gömülü sistem ve elektronik kart tasarımını şeffaf
+          sprintlerle, omuz omuza hayata geçiriyoruz.
         </motion.p>
 
         <motion.div

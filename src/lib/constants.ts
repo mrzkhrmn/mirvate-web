@@ -2,7 +2,7 @@ export const SITE = {
   name: "MIRVATE",
   tagline: "Engineering What's Next.",
   description:
-    "MIRVATE; özel yazılım geliştirme odaklı bir mühendislik şirketidir. Mobil, web ve masaüstü uygulamaları keşiften canlıya alıma kadar birlikte inşa ederiz.",
+    "MIRVATE; özel yazılım, gömülü sistem ve elektronik kart tasarımını bir arada sunan bir mühendislik şirketidir. Fikirden çalışan ürüne kadar birlikte inşa ederiz.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mirvate.com",
   locale: "tr_TR",
   email: "info@mirvate.com",
@@ -12,14 +12,20 @@ export const SITE = {
 export const SEO_KEYWORDS = [
   "özel yazılım geliştirme",
   "özel yazılım şirketi",
+  "elektronik kart tasarımı",
+  "PCB tasarımı",
+  "gömülü yazılım geliştirme",
+  "embedded software",
+  "ürün Ar-Ge",
   "yazılım şirketi Türkiye",
   "kurumsal yazılım geliştirme",
   "mobil uygulama geliştirme",
   "web uygulaması geliştirme",
   "masaüstü uygulama geliştirme",
   "SaaS geliştirme",
-  "iOS uygulama geliştirme",
-  "Android uygulama geliştirme",
+  "STM32",
+  "ESP32",
+  "SMD dizgi",
   "React Native",
   "Next.js",
   "Electron",
@@ -41,9 +47,11 @@ export const FOOTER_SERVICES = [
   { href: "/services#custom-software", label: "Özel Yazılım Geliştirme" },
   { href: "/services#mobile", label: "Mobil Uygulama" },
   { href: "/services#web-saas", label: "Web & SaaS" },
-  { href: "/services#desktop", label: "Masaüstü Uygulama" },
+  { href: "/services#electronics-design", label: "Elektronik Kart & PCB" },
+  { href: "/services#embedded-software", label: "Gömülü Yazılım" },
+  { href: "/services#product-rd", label: "Ürün Ar-Ge" },
+  { href: "/services#pcb-assembly", label: "PCB & Dizgi" },
   { href: "/services#backend-api", label: "Backend & API" },
-  { href: "/services#integrations", label: "Entegrasyon & Otomasyon" },
 ] as const;
 
 export const FOOTER_EXPLORE = [
@@ -84,12 +92,12 @@ export const TECH_CAPABILITIES = [
   },
   {
     id: "04",
-    title: "İş & Operasyon Uygulamaları",
+    title: "Gömülü Sistem & Elektronik",
     description:
-      "Satış, müşteri ilişkileri ve iç süreç panoları. İhtiyaç halinde CRM benzeri pipeline, görev ve raporlama katmanlarını ürüne gömülü tasarlarız.",
-    icon: "store" as const,
+      "Cihaz kontrolü, sensör ve haberleşme için gömülü yazılım; ürüne özel elektronik kart mimarisi. Donanım ve yazılım aynı gereksinim setinde ilerler.",
+    icon: "circuit" as const,
     accent: "violet" as const,
-    tags: ["Operasyon Paneli", "Pipeline", "Raporlama", "Ekip İş Akışı"],
+    tags: ["STM32 / ESP32", "Firmware", "PCB Tasarım", "Haberleşme"],
   },
   {
     id: "05",
@@ -111,9 +119,33 @@ export const TECH_CAPABILITIES = [
   },
 ] as const;
 
+export const SOFTWARE_SERVICE_SLUGS = [
+  "custom-software",
+  "mobile",
+  "web-saas",
+  "desktop",
+  "backend-api",
+  "crm",
+  "b2b",
+  "b2c",
+  "payments",
+  "cloud-devops",
+  "integrations",
+] as const;
+
+export const ELECTRONICS_SERVICE_SLUGS = [
+  "electronics-design",
+  "embedded-software",
+  "product-rd",
+  "pcb-assembly",
+  "product-assembly",
+  "engineering-consulting",
+] as const;
+
 export const SERVICES = [
   {
     slug: "custom-software",
+    group: "software" as const,
     title: "Özel Yazılım Geliştirme",
     description:
       "Sıfırdan tasarlanan, iş süreçlerinize birebir uyumlu kurumsal ürünler ve uzun ömürlü mimariler.",
@@ -125,6 +157,7 @@ export const SERVICES = [
   },
   {
     slug: "mobile",
+    group: "software" as const,
     title: "Mobil Uygulama Geliştirme",
     description:
       "iOS ve Android için saha, müşteri ve iç operasyon uygulamaları.",
@@ -136,6 +169,7 @@ export const SERVICES = [
   },
   {
     slug: "web-saas",
+    group: "software" as const,
     title: "Web Uygulaması Geliştirme",
     description:
       "Çok kiracılı SaaS, yönetim panelleri ve bulut iş uygulamaları.",
@@ -147,6 +181,7 @@ export const SERVICES = [
   },
   {
     slug: "desktop",
+    group: "software" as const,
     title: "Masaüstü Uygulama Geliştirme",
     description:
       "Electron ve yerel yığınlarla yoğun veri işleme ve operasyon panelleri.",
@@ -158,6 +193,7 @@ export const SERVICES = [
   },
   {
     slug: "backend-api",
+    group: "software" as const,
     title: "Backend & API Mimarisi",
     description:
       "Ürün ve ödeme akışlarını besleyen düşük gecikmeli, güvenli API’ler.",
@@ -169,6 +205,7 @@ export const SERVICES = [
   },
   {
     slug: "crm",
+    group: "software" as const,
     title: "CRM Sistemleri",
     description:
       "Satış hunisi, müşteri kartı, görevler ve raporlamayı tek çatı altında toplayan özel çözümler.",
@@ -180,6 +217,7 @@ export const SERVICES = [
   },
   {
     slug: "b2b",
+    group: "software" as const,
     title: "B2B Platformları",
     description:
       "Bayi, tedarikçi ve kurumsal müşteri portalları; sipariş, fiyat listesi ve onay akışlarıyla.",
@@ -191,6 +229,7 @@ export const SERVICES = [
   },
   {
     slug: "b2c",
+    group: "software" as const,
     title: "B2C & Müşteri Deneyimi",
     description:
       "Tüketiciye dönük mağaza, üyelik, kampanya ve omnichannel deneyim platformları.",
@@ -202,6 +241,7 @@ export const SERVICES = [
   },
   {
     slug: "payments",
+    group: "software" as const,
     title: "Ödeme Sistemleri & FinTek",
     description:
       "Faturalama ve tahsilat için güvenli ödeme altyapıları.",
@@ -213,6 +253,7 @@ export const SERVICES = [
   },
   {
     slug: "cloud-devops",
+    group: "software" as const,
     title: "Bulut & DevOps Çözümleri",
     description:
       "CI/CD, Kubernetes ve gözlemlenebilirlik ile güvenilir canlıya alma.",
@@ -224,6 +265,7 @@ export const SERVICES = [
   },
   {
     slug: "integrations",
+    group: "software" as const,
     title: "Sistem Entegrasyonu & Otomasyon",
     description:
       "ERP, muhasebe, ödeme ve pazarlama araçları arasında kesintisiz veri köprüleri.",
@@ -233,6 +275,78 @@ export const SERVICES = [
     details:
       "RabbitMQ ve API’lerle olay güdümlü entegrasyonlar kuruyoruz. Background processing ve güvenilir mesajlaşma dahil.",
   },
+  {
+    slug: "electronics-design",
+    group: "electronics" as const,
+    title: "Elektronik Kart & PCB Tasarımı",
+    description:
+      "Ürünün işlevlerine, güç ihtiyacına ve çalışma koşullarına uygun elektronik mimari.",
+    icon: "circuit-board" as const,
+    accent: "cyan" as const,
+    meta: "Şema • PCB • Güç Yönetimi",
+    details:
+      "Ürüne özel elektronik kart mimarisi tasarlıyoruz. Şema, PCB yerleşimi, güç yönetimi ve giriş/çıkış kurgusu kullanım senaryonuza göre şekillenir.",
+  },
+  {
+    slug: "embedded-software",
+    group: "electronics" as const,
+    title: "Gömülü Yazılım Geliştirme",
+    description:
+      "Donanımla birlikte ilerleyen cihaz kontrolü, veri toplama ve haberleşme yazılımı.",
+    icon: "microchip" as const,
+    accent: "cyan" as const,
+    meta: "STM32 • ESP32 • Firmware",
+    details:
+      "Mikrodenetleyici tabanlı firmware geliştiriyoruz. Sensör okuma, motor/sürücü kontrolü, kablosuz veya endüstriyel haberleşme ve güvenli güncelleme senaryoları dahil.",
+  },
+  {
+    slug: "product-rd",
+    group: "electronics" as const,
+    title: "Anahtar Teslim Ürün Ar-Ge",
+    description:
+      "İlk kullanım senaryosundan prototipe ve üretime hazırlığa uzanan ürün geliştirme.",
+    icon: "flask" as const,
+    accent: "cyan" as const,
+    meta: "Fikir • Prototip • Üretime Hazırlık",
+    details:
+      "Elektronik, gömülü yazılım ve gerektiğinde uygulama katmanını tek süreçte birleştiriyoruz. Kapsam, takvim ve test kriterlerini birlikte netleştiririz.",
+  },
+  {
+    slug: "pcb-assembly",
+    group: "electronics" as const,
+    title: "PCB & SMD/THT Dizgi Koordinasyonu",
+    description:
+      "Üretim dosyaları, bileşenler ve montaj gereksinimlerini birlikte değerlendiren süreç.",
+    icon: "layers" as const,
+    accent: "violet" as const,
+    meta: "Gerber • BOM • Dizgi",
+    details:
+      "PCB üretimi ve SMD/THT dizgi için dosya setini (Gerber, BOM, yerleşim) hazırlar; üretim ve montaj ortaklarıyla koordinasyonu yönetiriz. Test ve revizyon ihtiyaçları proje özelinde tanımlanır.",
+  },
+  {
+    slug: "product-assembly",
+    group: "electronics" as const,
+    title: "Ürün Montajı",
+    description:
+      "Elektronik kartların mekanik parçalar, kablolama ve arayüzlerle bir araya getirilmesi.",
+    icon: "package" as const,
+    accent: "violet" as const,
+    meta: "Mekanik • Kablo • Arayüz",
+    details:
+      "Kart, kablolama, mekanik parçalar ve kullanıcı arayüzünü çalışan bir sistemde birleştiriyoruz. Montaj sırası, test ve kalite kontrol adımları kapsamla birlikte planlanır.",
+  },
+  {
+    slug: "engineering-consulting",
+    group: "electronics" as const,
+    title: "Mühendislik Danışmanlığı",
+    description:
+      "Mevcut ürününüzün tasarım, yazılım veya üretime hazırlığını teknik açıdan değerlendiririz.",
+    icon: "wrench" as const,
+    accent: "violet" as const,
+    meta: "Revizyon • Fizibilite • Yol Haritası",
+    details:
+      "Mevcut kart, firmware veya ürün mimarisini inceler; riskleri, maliyet ve üretim hazırlığını netleştiririz. İyileştirme yol haritasını birlikte çıkarırız.",
+  },
 ] as const;
 
 export const PROCESS_STEPS = [
@@ -240,7 +354,7 @@ export const PROCESS_STEPS = [
     step: "01",
     title: "Ortak Keşif",
     description:
-      "İş hedeflerinizi, kullanıcı ihtiyaçlarını ve teknik kısıtları ekibinizle tek masada detaylandırıyoruz.",
+      "İş hedeflerinizi, kullanım koşullarını ve teknik kısıtları ekibinizle tek masada detaylandırıyoruz.",
     output: "Ortak Ürün Şartnamesi",
     accent: "cyan" as const,
   },
@@ -248,39 +362,39 @@ export const PROCESS_STEPS = [
     step: "02",
     title: "Mimari Kurgu",
     description:
-      "Sistemin ölçeklenebilir altyapısını, veritabanı kurgusunu ve teknoloji yığınını onayınıza sunarak belirliyoruz.",
-    output: "C4 Sistem Mimarisi",
+      "Yazılım yığını, elektronik mimari veya her ikisini birden; ölçeklenebilir kurguları onayınıza sunarak belirliyoruz.",
+    output: "Sistem & Donanım Mimarisi",
     accent: "cyan" as const,
   },
   {
     step: "03",
-    title: "Esnek Tasarım",
+    title: "Tasarım & Prototip",
     description:
-      "Tasarım taşa kazınmış değildir. Geri bildirimleriniz ve talepleriniz doğrultusunda esnekçe revize edilir.",
-    output: "İteratif UI/UX & Prototip",
+      "Arayüz, şema/PCB veya firmware taslakları geri bildiriminizle iteratif ilerler; taşa kazınmış değildir.",
+    output: "İteratif Tasarım & Prototip",
     accent: "cyan" as const,
   },
   {
     step: "04",
     title: "Şeffaf Sprintler",
     description:
-      "Haftalık sprint döngüleri. Geliştirilen her modülü canlı test ortamlarında düzenli olarak demolarla incelersiniz.",
-    output: "Canlı Demo & Sprint Raporu",
+      "Haftalık döngüler. Yazılım demoları veya çalışan kart/firmware testleriyle ilerlemeyi birlikte izlersiniz.",
+    output: "Demo & Sprint Raporu",
     accent: "violet" as const,
   },
   {
     step: "05",
-    title: "Canlıya Alım",
+    title: "Doğrulama & Canlıya Alım",
     description:
-      "Birlikte kararlaştırılan kriterler sağlandığında sıfır kesintiyle üretim ortamına geçiş sağlanır.",
-    output: "Üretim Dağıtım Paketi",
+      "Birlikte kararlaştırılan test ve kabul kriterleri sağlandığında üretime veya canlı ortama geçilir.",
+    output: "Doğrulama & Teslim Paketi",
     accent: "violet" as const,
   },
   {
     step: "06",
     title: "Birlikte Büyüme",
     description:
-      "Ürün yayımlandıktan sonra da yanınızdayız; gerçek kullanıcı metriklerine göre sistemi sürekli geliştiriyoruz.",
+      "Ürün sahaya çıktıktan sonra da yanınızdayız; metrikler ve saha geri bildirimine göre sürekli geliştiririz.",
     output: "Gelişim Yol Haritası",
     accent: "violet" as const,
   },
@@ -297,35 +411,35 @@ export const WHY_PILLARS = [
   {
     title: "Esnek Tasarım Revizyonları",
     description:
-      "Tasarım süreci kalıplara hapsolmaz. İş modelinize ve kullanıcı geri bildirimlerinize göre revize edilir, tam içinize sinene kadar şekillenir.",
+      "Tasarım süreci kalıplara hapsolmaz. Yazılım veya elektronik tarafta geri bildirimlerinize göre revize edilir.",
     icon: "pen-tool" as const,
     accent: "cyan" as const,
   },
   {
     title: "Düzenli Demo & Canlı Testler",
     description:
-      "Her aşamada çalışan yazılım görürsünüz. Canlı test ortamları ve düzenli demolar ile projenin gelişimini anbean takip edersiniz.",
+      "Her aşamada çalışan çıktı görürsünüz. Yazılım demoları veya kart/firmware testleriyle ilerlemeyi takip edersiniz.",
     icon: "eye" as const,
     accent: "cyan" as const,
   },
   {
     title: "Modern & Geleceğe Hazır Mimari",
     description:
-      "Teknik borç bırakmadan; modern .NET 9, React, Next.js, konteyner mimarileri ve yüksek verimli veritabanlarıyla sağlam temeller kuruyoruz.",
+      "Teknik borç bırakmadan; modern yazılım yığınları ve üretime hazır elektronik mimarilerle sağlam temeller kuruyoruz.",
     icon: "cpu" as const,
     accent: "violet" as const,
   },
   {
-    title: "Çoklu Platform Bütünlüğü",
+    title: "Yazılım + Donanım Bütünlüğü",
     description:
-      "Mobil, web ve masaüstü sistemlerde aynı iş mantığını kusursuz performans ve tutarlı kullanıcı deneyimiyle birleştiriyoruz.",
+      "Uygulama, gömülü yazılım ve elektronik kartı aynı ürün hedefinde birleştirerek tutarlı deneyim sunuyoruz.",
     icon: "network" as const,
     accent: "violet" as const,
   },
   {
     title: "Doğrudan Mühendis İletişimi",
     description:
-      "Aracı temsilciler yok. Kodunuzu yazan, mimariyi tasarlayan kıdemli yazılım mühendisleri ve mimarlarla doğrudan iletişim kurarsınız.",
+      "Aracı temsilciler yok. Kodunuzu veya kartınızı geliştiren mühendislerle doğrudan iletişim kurarsınız.",
     icon: "messages-square" as const,
     accent: "violet" as const,
   },
@@ -338,6 +452,12 @@ export const PROJECT_TYPES = [
   { value: "desktop", label: "Masaüstü Uygulaması (Electron.js / OS Entegre)" },
   { value: "backend-api", label: "Backend & API Geliştirme (C# / .NET 9)" },
   { value: "ecosystem", label: "Kapsamlı Ürün (Web + Mobil + Backend)" },
+  { value: "electronics-design", label: "Elektronik Kart & PCB Tasarımı" },
+  { value: "embedded-software", label: "Gömülü Yazılım / Firmware" },
+  { value: "product-rd", label: "Anahtar Teslim Ürün Ar-Ge" },
+  { value: "pcb-assembly", label: "PCB & SMD/THT Dizgi" },
+  { value: "product-assembly", label: "Ürün Montajı" },
+  { value: "engineering-consulting", label: "Mühendislik Danışmanlığı" },
   { value: "crm", label: "CRM Sistemi" },
   { value: "b2b", label: "B2B Platformu (Bayi / Tedarik / Portal)" },
   { value: "b2c", label: "B2C Platformu (Mağaza / Üyelik / Deneyim)" },
@@ -395,16 +515,16 @@ export const ABOUT_VALUES = [
   {
     title: "Vizyon",
     description:
-      "Yazılım mühendisliğini şeffaf, iş birliğine dayalı ve uzun ömürlü ürünler üreten bir disiplin olarak konumlandırmak.",
+      "Yazılım ve elektronik mühendisliğini şeffaf, iş birliğine dayalı ve uzun ömürlü ürünler üreten bir disiplin olarak konumlandırmak.",
   },
   {
     title: "Misyon",
     description:
-      "Startuplar ve işletmeler için özel yazılımı uçtan uca hayata geçirmek; mobil, web, masaüstü ve backend yüzeylerini ihtiyaca göre birleştirmek.",
+      "Startuplar ve işletmeler için özel yazılım ile elektronik / gömülü ürün geliştirmeyi uçtan uca hayata geçirmek.",
   },
   {
     title: "Mühendislik Yaklaşımı",
     description:
-      "Keşiften canlıya alıma kadar her adımı müşteriyle birlikte planlar; sprint demoları, canlı test ortamları ve esnek revizyonlarla ilerleriz.",
+      "Keşiften teslime kadar her adımı müşteriyle birlikte planlar; demolar, prototip testleri ve esnek revizyonlarla ilerleriz.",
   },
 ] as const;

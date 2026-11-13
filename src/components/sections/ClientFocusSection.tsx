@@ -11,7 +11,7 @@ const FOCUS = [
   {
     label: "01",
     title: "Markanızın ürünü",
-    text: "Kendi SaaS vitrinimizi satmıyoruz. İhtiyacınıza özel yazılımı sizin markanız ve iş kurallarınız altında kuruyoruz.",
+    text: "Kendi vitrin ürünümüzü satmıyoruz. Yazılım veya elektronik ürünü sizin markanız ve iş kurallarınız altında kuruyoruz.",
   },
   {
     label: "02",
@@ -21,17 +21,17 @@ const FOCUS = [
   {
     label: "03",
     title: "Uçtan uca mühendislik",
-    text: "Keşiften canlıya alıma kadar mobil, web, masaüstü ve backend’i tek ekiple bağlarız.",
+    text: "Keşiften teslime kadar uygulama yazılımı, gömülü sistem ve elektronik kartı tek ekiple bağlarız.",
   },
 ] as const;
 
 const SURFACES = [
   "Özel yazılım",
-  "Mobil uygulamalar",
-  "Web & SaaS",
-  "Masaüstü yazılımlar",
-  "Operasyon panelleri",
-  "API & entegrasyon",
+  "Mobil & web",
+  "Gömülü yazılım",
+  "Elektronik kart",
+  "Ürün Ar-Ge",
+  "PCB & dizgi",
 ] as const;
 
 export function ClientFocusSection() {
@@ -53,8 +53,8 @@ export function ClientFocusSection() {
             Ürün vitrini değil; sizin ürününüzü inşa ederiz.
           </h2>
           <p className="mt-4 text-[15px] leading-7 text-on-surface-variant md:text-base">
-            Hazır bir MIRVATE ürünü göstermiyoruz. Deneyimimiz, farklı şirketler
-            adına üretilmiş yazılımlarda birikiyor — burada o yaklaşımı öne
+            Hazır paket satmıyoruz. Deneyimimiz, farklı şirketler adına üretilmiş
+            yazılım ve elektronik ürünlerde birikiyor — burada o yaklaşımı öne
             çıkarıyoruz.
           </p>
         </Reveal>

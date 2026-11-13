@@ -29,8 +29,8 @@ export function ContactSection() {
                 Birlikte konuşalım.
               </h2>
               <p className="mt-2 leading-7 text-on-surface-variant">
-                Özel yazılım veya ürün fikrinizi paylaşın. İlk teknik
-                fizibilite ve yol haritası notlarını 24 saat içinde sunarız.
+                Özel yazılım, gömülü sistem veya elektronik kart fikrinizi
+                paylaşın. İlk teknik fizibilite notlarını 24 saat içinde sunarız.
               </p>
 
               <div className="mt-6 space-y-2">
