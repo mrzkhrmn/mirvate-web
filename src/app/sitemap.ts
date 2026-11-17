@@ -1,42 +1,59 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
 import { getAllPosts } from "@/features/insights/lib/posts";
-
-type Freq = MetadataRoute.Sitemap[number]["changeFrequency"];
-
-const STATIC_PAGES: {
-  path: string;
-  priority: number;
-  changeFrequency: Freq;
-}[] = [
-  { path: "", priority: 1, changeFrequency: "weekly" },
-  { path: "/services", priority: 0.95, changeFrequency: "weekly" },
-  { path: "/technologies", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/about", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
-  // /projects: placeholder — noIndex; sitemap’ten çıkarıldı
-  { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/security", priority: 0.3, changeFrequency: "yearly" },
-];
+import { absoluteUrl } from "@/lib/metadata";
+import {
+  INDEXABLE_STATIC_ROUTES,
+  getLatestMtime,
+  insightContentRelativePath,
+  maxDate,
+} from "@/lib/sitemap-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const posts = getAllPosts();
 
-  const staticRoutes = STATIC_PAGES.map((page) => ({
-    url: `${SITE.url}${page.path}`,
-    lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => {
+    const contentMtime = getLatestMtime([insightContentRelativePath(post.slug)]);
+    return {
+      url: absoluteUrl(`/insights/${post.slug}`),
+      lastModified: maxDate(post.date, contentMtime),
+    };
+  });
 
-  const posts = getAllPosts().map((post) => ({
-    url: `${SITE.url}/insights/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.65,
-  }));
+  const latestPostModified =
+    postEntries.length > 0
+      ? postEntries.reduce((latest, entry) => {
+          const current = entry.lastModified
+            ? new Date(entry.lastModified)
+            : null;
+          if (!current) return latest;
+          if (!latest || current > latest) return current;
+          return latest;
+        }, null as Date | null)
+      : null;
 
-  return [...staticRoutes, ...posts];
+  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTES.map(
+    (route) => {
+      const sourceMtime = getLatestMtime(route.sourceFiles);
+
+      if (route.path === "/insights") {
+        return {
+          url: absoluteUrl(route.path),
+          lastModified: maxDate(sourceMtime, latestPostModified),
+        };
+      }
+
+      if (!sourceMtime) {
+        throw new Error(
+          `Missing source files for sitemap route ${route.path}`,
+        );
+      }
+
+      return {
+        url: absoluteUrl(route.path),
+        lastModified: sourceMtime,
+      };
+    },
+  );
+
+  return [...staticEntries, ...postEntries];
 }

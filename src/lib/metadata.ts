@@ -18,8 +18,10 @@ type PageMetaInput = {
 
 export function absoluteUrl(path = "") {
   const base = SITE.url.replace(/\/$/, "");
-  if (!path) return base;
-  return path.startsWith("http") ? path : `${base}${path.startsWith("/") ? path : `/${path}`}`;
+  if (!path || path === "/") return base;
+  if (path.startsWith("http")) return path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalized}`;
 }
 
 function mergeKeywords(extra?: string[]) {
