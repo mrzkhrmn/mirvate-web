@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,10 @@ import { cn } from "@/lib/utils";
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const panelId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -18,26 +22,58 @@ export function MobileMenu() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (open) {
+      firstLinkRef.current?.focus();
+      wasOpenRef.current = true;
+      return;
+    }
+
+    if (wasOpenRef.current) {
+      triggerRef.current?.focus();
+      wasOpenRef.current = false;
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <div className="lg:hidden">
       <button
+        ref={triggerRef}
         type="button"
         className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-surface-container text-on-surface"
         aria-expanded={open}
-        aria-controls="mobile-nav"
+        aria-controls={panelId}
         aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
         onClick={() => setOpen((v) => !v)}
       >
-        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {open ? (
+          <X className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <Menu className="h-5 w-5" aria-hidden="true" />
+        )}
       </button>
 
       {open ? (
         <div
-          id="mobile-nav"
+          id={panelId}
           className="fixed inset-x-0 top-20 z-50 border-t border-white/5 bg-surface-container-lowest/95 px-6 py-6 backdrop-blur-xl"
         >
           <nav className="flex flex-col gap-1" aria-label="Mobil navigasyon">
-            {NAV_LINKS.map((link) => {
+            {NAV_LINKS.map((link, index) => {
               const active =
                 link.href === "/"
                   ? pathname === "/"
@@ -46,6 +82,7 @@ export function MobileMenu() {
               return (
                 <Link
                   key={link.href + link.label}
+                  ref={index === 0 ? firstLinkRef : undefined}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(

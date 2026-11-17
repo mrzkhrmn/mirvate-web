@@ -107,35 +107,45 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="space-y-1">
-            <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+            <label
+              htmlFor="contact-name"
+              className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant"
+            >
               Ad Soyad *
             </label>
             <input
+              id="contact-name"
               className={inputClass}
               placeholder="Ahmet Yılmaz"
               autoComplete="name"
               {...register("name")}
               aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "contact-name-error" : undefined}
             />
             {errors.name ? (
-              <p className="text-xs text-error" role="alert">
+              <p id="contact-name-error" className="text-xs text-error" role="alert">
                 {errors.name.message}
               </p>
             ) : null}
           </div>
           <div className="space-y-1">
-            <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+            <label
+              htmlFor="contact-company"
+              className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant"
+            >
               Şirket / Kuruluş *
             </label>
             <input
+              id="contact-company"
               className={inputClass}
               placeholder="Teknoloji A.Ş."
               autoComplete="organization"
               {...register("company")}
               aria-invalid={!!errors.company}
+              aria-describedby={errors.company ? "contact-company-error" : undefined}
             />
             {errors.company ? (
-              <p className="text-xs text-error" role="alert">
+              <p id="contact-company-error" className="text-xs text-error" role="alert">
                 {errors.company.message}
               </p>
             ) : null}
@@ -144,28 +154,40 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="space-y-1">
-            <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+            <label
+              htmlFor="contact-email"
+              className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant"
+            >
               E-posta *
             </label>
             <input
+              id="contact-email"
               type="email"
               className={inputClass}
               placeholder="ornek@email.com"
               autoComplete="email"
               {...register("email")}
               aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "contact-email-error" : undefined}
             />
             {errors.email ? (
-              <p className="text-xs text-error" role="alert">
+              <p id="contact-email-error" className="text-xs text-error" role="alert">
                 {errors.email.message}
               </p>
             ) : null}
           </div>
           <div className="space-y-1">
-            <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+            <label
+              htmlFor="contact-project-type"
+              className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant"
+            >
               Hedef Platform / Kapsam
             </label>
-            <select className={inputClass} {...register("projectType")}>
+            <select
+              id="contact-project-type"
+              className={inputClass}
+              {...register("projectType")}
+            >
               {PROJECT_TYPES.map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
@@ -175,10 +197,10 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div className="space-y-1">
-          <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+        <fieldset className="space-y-1">
+          <legend className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
             Öngörülen Proje Bütçesi
-          </label>
+          </legend>
           <div className="grid grid-cols-2 gap-1 sm:grid-cols-3">
             {BUDGET_RANGES.map((range) => (
               <label key={range.value} className="cursor-pointer">
@@ -194,21 +216,26 @@ export function ContactForm() {
               </label>
             ))}
           </div>
-        </div>
+        </fieldset>
 
         <div className="space-y-1">
-          <label className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant">
+          <label
+            htmlFor="contact-message"
+            className="block font-[family-name:var(--font-mono)] text-xs text-on-surface-variant"
+          >
             Proje Hedefleri & Detaylar *
           </label>
           <textarea
+            id="contact-message"
             rows={4}
             className={cn(inputClass, "h-auto py-3")}
             placeholder="Projenizin hedeflerini, çözmek istediğiniz problemleri ve hedeflenen takvimi kısaca özetleyin..."
             {...register("message")}
             aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? "contact-message-error" : undefined}
           />
           {errors.message ? (
-            <p className="text-xs text-error" role="alert">
+            <p id="contact-message-error" className="text-xs text-error" role="alert">
               {errors.message.message}
             </p>
           ) : null}
@@ -219,7 +246,7 @@ export function ContactForm() {
             className="flex items-center gap-2 rounded bg-surface-container-high p-4 font-[family-name:var(--font-mono)] text-xs text-emerald-400"
             role="status"
           >
-            <CheckCircle2 className="h-5 w-5 shrink-0" />
+            <CheckCircle2 className="h-5 w-5 shrink-0" aria-hidden="true" />
             <span>{serverMessage}</span>
           </div>
         ) : null}
@@ -235,7 +262,7 @@ export function ContactForm() {
           disabled={isSubmitting}
           className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary-container font-[family-name:var(--font-headline)] text-sm font-semibold text-on-primary-container shadow-[0_0_24px_rgba(0,240,255,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_0_36px_rgba(0,240,255,0.6)] active:scale-[0.99] disabled:opacity-60"
         >
-          <Send className="h-[18px] w-[18px]" />
+          <Send className="h-[18px] w-[18px]" aria-hidden="true" />
           {isSubmitting
             ? "Gönderiliyor…"
             : "Talebi İletin • Mimari Keşif Görüşmesi Planlayın"}

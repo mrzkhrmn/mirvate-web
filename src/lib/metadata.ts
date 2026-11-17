@@ -134,6 +134,7 @@ export function organizationJsonLd() {
         "@type": "ContactPoint",
         contactType: "sales",
         email: SITE.email,
+        telephone: SITE.phoneE164,
         availableLanguage: ["Turkish", "English"],
         url: absoluteUrl("/contact"),
       },
@@ -328,7 +329,7 @@ export const HOME_FAQS = [
   {
     question: "Proje talebi nasıl iletilir?",
     answer:
-      "İletişim formundan veya info@mirvate.com adresinden bize yazabilirsiniz. İlk teknik fizibilite notlarını mümkün olduğunca hızlı paylaşırız.",
+      "İletişim formundan, info@mirvate.com adresinden veya +90 531 205 56 50 numarasına telefon / WhatsApp üzerinden bize ulaşabilirsiniz. İlk teknik fizibilite notlarını mümkün olduğunca hızlı paylaşırız.",
   },
 ] as const;
 

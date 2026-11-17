@@ -6,7 +6,12 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mirvate.com",
   locale: "tr_TR",
   email: "info@mirvate.com",
+  phoneDisplay: "+90 531 205 56 50",
+  phoneE164: "+905312055650",
+  whatsappUrl: "https://wa.me/905312055650",
 } as const;
+
+export const SITE_TEL_HREF = `tel:${SITE.phoneE164}` as const;
 
 /** Ana arama niyetleri — meta keywords + şema için ortak havuz */
 export const SEO_KEYWORDS = [
