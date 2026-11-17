@@ -11,6 +11,7 @@ const budgetValues = BUDGET_RANGES.map((b) => b.value) as [
   ...(typeof BUDGET_RANGES)[number]["value"][],
 ];
 
+/** Gerçek form alanları — honeypot yok (autofill client validation’ı kilitlemesin). */
 export const contactSchema = z.object({
   name: z
     .string()
@@ -32,7 +33,13 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Mesaj gerekli")
     .max(4000, "Mesaj çok uzun"),
-  companyUrl: z.string().max(0).optional(), // honeypot (website adı autofill tetikler)
+});
+
+/** API body: form + isteğe bağlı honeypot */
+export const contactRequestSchema = contactSchema.extend({
+  /** Bot tuzak alanı — doluysa istek yok sayılır */
+  _hp: z.string().max(200).optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
+export type ContactRequestValues = z.infer<typeof contactRequestSchema>;

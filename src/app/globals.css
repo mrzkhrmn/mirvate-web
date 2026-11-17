@@ -76,6 +76,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html.intro-active,
+  html.intro-active body {
+    overflow: hidden;
+  }
+
   body {
     background: var(--color-background);
     color: var(--color-on-surface);

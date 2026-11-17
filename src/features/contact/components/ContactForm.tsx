@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,12 +15,13 @@ import {
 import { cn } from "@/lib/utils";
 
 function resolveProjectType(value: string | null): ProjectTypeValue {
-  return isProjectType(value) ? value : "ecosystem";
+  return isProjectType(value) ? value : "custom-software";
 }
 
 export function ContactForm() {
   const searchParams = useSearchParams();
   const initialProjectType = resolveProjectType(searchParams.get("type"));
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const [serverMessage, setServerMessage] = useState<string | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -36,7 +37,6 @@ export function ContactForm() {
     defaultValues: {
       budget: "100k-150k",
       projectType: initialProjectType,
-      companyUrl: "",
     },
   });
 
@@ -49,11 +49,13 @@ export function ContactForm() {
     setServerError(null);
     setServerMessage(null);
 
+    if (honeypotRef.current) honeypotRef.current.value = "";
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, _hp: "" }),
       });
       const json = (await res.json()) as { message?: string; error?: string };
 
@@ -70,7 +72,6 @@ export function ContactForm() {
         message: "",
         projectType: resolveProjectType(searchParams.get("type")),
         budget: "100k-150k",
-        companyUrl: "",
       });
     } catch {
       setServerError("Bağlantı hatası. Lütfen daha sonra tekrar deneyin.");
@@ -86,15 +87,23 @@ export function ContactForm() {
         Proje Talebi Oluşturun
       </h3>
 
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
-        <input
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
+      <form className="relative space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+        {/* Honeypot: RHF dışında — autofill client Zod’u kilitlemesin */}
+        <div
+          className="pointer-events-none absolute -left-[10000px] top-0 h-0 w-0 overflow-hidden opacity-0"
           aria-hidden="true"
-          className="absolute -left-[9999px] h-0 w-0 opacity-0"
-          {...register("companyUrl")}
-        />
+        >
+          <label htmlFor="mirvate-fax">Fax</label>
+          <input
+            ref={honeypotRef}
+            id="mirvate-fax"
+            type="text"
+            name="fax_number"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+          />
+        </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="space-y-1">
@@ -104,6 +113,7 @@ export function ContactForm() {
             <input
               className={inputClass}
               placeholder="Ahmet Yılmaz"
+              autoComplete="name"
               {...register("name")}
               aria-invalid={!!errors.name}
             />
@@ -120,6 +130,7 @@ export function ContactForm() {
             <input
               className={inputClass}
               placeholder="Teknoloji A.Ş."
+              autoComplete="organization"
               {...register("company")}
               aria-invalid={!!errors.company}
             />
@@ -140,6 +151,7 @@ export function ContactForm() {
               type="email"
               className={inputClass}
               placeholder="ornek@email.com"
+              autoComplete="email"
               {...register("email")}
               aria-invalid={!!errors.email}
             />

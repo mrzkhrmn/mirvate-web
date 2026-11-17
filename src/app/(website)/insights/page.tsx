@@ -7,9 +7,14 @@ import { breadcrumbJsonLd, createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Insights",
   description:
-    "MIRVATE mühendislik notları: CRM, backend, mobil, DevOps ve ürün mimarisi üzerine yazılar.",
+    "MIRVATE mühendislik notları: özel yazılım, backend, mobil, DevOps ve ürün mimarisi üzerine yazılar.",
   path: "/insights",
-  keywords: ["yazılım blog", "mühendislik notları", "MIRVATE Insights"],
+  keywords: [
+    "özel yazılım blog",
+    "yazılım mühendisliği",
+    "mühendislik notları",
+    "MIRVATE Insights",
+  ],
 });
 
 export default function InsightsPage() {

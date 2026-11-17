@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/validation";
+import { contactRequestSchema } from "@/lib/validation";
 import { sendInquiry } from "@/features/contact/services/sendInquiry";
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const parsed = contactSchema.safeParse(body);
+    const parsed = contactRequestSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -51,14 +51,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Honeypot filled → pretend success
-    if (parsed.data.companyUrl) {
+    const { _hp, ...inquiry } = parsed.data;
+
+    // Honeypot dolu → bot; başarı gibi davran
+    if (_hp && _hp.trim().length > 0) {
       return NextResponse.json({
         message: "Mesajınız iletildi.",
       });
     }
 
-    const result = await sendInquiry(parsed.data);
+    const result = await sendInquiry(inquiry);
     return NextResponse.json({ message: result.message });
   } catch {
     return NextResponse.json(

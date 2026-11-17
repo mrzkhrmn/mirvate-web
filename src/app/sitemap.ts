@@ -15,22 +15,25 @@ const STATIC_PAGES: {
   { path: "/about", priority: 0.85, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
   { path: "/insights", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/projects", priority: 0.5, changeFrequency: "monthly" },
+  // /projects: placeholder — noIndex; sitemap’ten çıkarıldı
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
   { path: "/security", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   const staticRoutes = STATIC_PAGES.map((page) => ({
     url: `${SITE.url}${page.path}`,
+    lastModified: now,
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));
 
   const posts = getAllPosts().map((post) => ({
     url: `${SITE.url}/insights/${post.slug}`,
-    lastModified: post.date,
+    lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));

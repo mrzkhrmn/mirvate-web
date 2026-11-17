@@ -6,9 +6,15 @@ import { SITE } from "@/lib/constants";
 export const metadata = createPageMetadata({
   title: "İletişim",
   description:
-    "CRM, B2B/B2C veya özel yazılım projeniz için talep oluşturun. info@mirvate.com — mümkün olduğunca hızlı dönüş.",
+    "Özel yazılım, gömülü sistem veya elektronik kart projeniz için MIRVATE ile iletişime geçin.",
   path: "/contact",
-  keywords: ["MIRVATE iletişim", "yazılım teklifi", "proje talebi", SITE.email],
+  keywords: [
+    "özel yazılım teklifi",
+    "elektronik kart teklifi",
+    "gömülü yazılım proje talebi",
+    "MIRVATE iletişim",
+    SITE.email,
+  ],
 });
 
 export default function ContactPage() {
